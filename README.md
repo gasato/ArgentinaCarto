@@ -1,2 +1,2 @@
 # ArgentinaCarto
-Scripts QGIS  orientados a la cartografia en Argentina
+Scripts QGIS 3 orientados a la cartografia en Argentina
