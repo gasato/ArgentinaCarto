@@ -44,6 +44,7 @@ Obtener Tamaño del área en función de la escala para ajustar y definir el tam
 Centrar el marco en la hoja
 
 x = @layout_pagewidth / 2
+
 y = 100
 
 
@@ -56,7 +57,11 @@ Ubicar el marco y desplegar la composición
 * Todos los algoritmos se guardan en el archivo de proyecto, y en el archivo de plantilla de mapas.
 * Layoutitem se refiere a cada uno de los items que componen el mapa
 ### Obtener datos desde la base de datos cartoParam
+
 https://gis.stackexchange.com/questions/388063/get-feature-value-to-use-in-print-composer-label
-Problemas
+
+### Problemas
+
 function does not work in print layout (at least in 3.16). 
+
 attribute(get_feature_by_id ('POLIGONAL_FNHIS2008A_8babdf78_50dc_480f_b811_0da927b7c9a5',1),'area')
