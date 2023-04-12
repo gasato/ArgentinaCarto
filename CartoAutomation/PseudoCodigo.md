@@ -37,3 +37,11 @@ Definir SRC
 
 Definir Escala
 
+Obtener Tamaño del área en función de la escala para ajustar y definir el tamaño del marco
+
+(((x_max(item_variables('Mapa 1')['map_extent']) - x_min(item_variables('Mapa 1')['map_extent'])) * 1000) / 250000) + 20
+
+Rotar el mapa de ser necesario
+
+Ubicar el marco y desplegar la composición
+
