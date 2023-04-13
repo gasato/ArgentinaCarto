@@ -1,5 +1,12 @@
 # Automatización de Cartas
 
+## Diseño Cartográfico
+* Que elementos componen el mapa
+  * Diseño de los componentes del mapa
+  * Ubicación de los elementos en el papel
+  * Tamaño
+  * Tipografías
+
 ## Infraestructura de Datos
 
 * Capas de información
@@ -8,26 +15,42 @@
   * Identificador
   * Nombre
   * Otros datos como localidad, provincia
-  * 
+  * Información auxiliar puesta en forma explícita
+
+* Parámetros Cartográficos
+  * Sistema de Referencia
+  * Escala
+  * Estilo de grilla de coordenadas
+  * Ajustes (si son necesarios)
+    * Angulo de rotación
+    * Extensión geográfica (xmin, ymin, xmax, ymax)
+    * Tamaño del map frame (en mm)
+    * DPI
+
+* Diccionarios 
+
+Equivalencia entre clases y simbología.
+
 * Paleta Estándar de Colores
-  * Look Up Table, diccionarios  
+  * Estándar de colores (CMYK, Pantone Matching System)
+  * Look Up Table 
+ 
 * Mapa de Ubicación
 * Información Complementara
   * Copyrigth
   * Autores
   * Información cartográfica complementaria
     * Año de edición
+    * Fecha de generación del producto digital
     * Texto correspondiente a la descripción del SRC y Datum
 * Leyenda
 * Tablas
 * Diagramas complementarios
-* Estándares de Despliegue de la Información
-  * Sistema de Referencia
-  * Escala
-  * Ajustes (si son necesarios)
 
-* 
-* Orden de despliegue de las capas de información
+
+
+## Enlaces útiles
+https://www.nypl.org/blog/2011/01/06/elements-cartography
 
 ## Pseudo código para la confección automática de mapas
 
@@ -50,7 +73,10 @@ y = 100
 
 Rotar el mapa de ser necesario
 
-Ubicar el marco y desplegar la composición
+Ubicar el marco. 
+
+Desplegar la composición
+* Orden de despliegue de las capas de información
 
 # Automatización QGIS
 ## Observaciones
