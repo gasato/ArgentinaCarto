@@ -56,6 +56,8 @@ https://www.nypl.org/blog/2011/01/06/elements-cartography
 
 Definir tamaño de página
 
+Identificar la hoja y el tema a desplegar
+
 Definir SRC
 
 Definir Escala
