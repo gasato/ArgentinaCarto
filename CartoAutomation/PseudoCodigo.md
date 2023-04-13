@@ -56,6 +56,51 @@ Ubicar el marco y desplegar la composición
 ## Observaciones
 * Todos los algoritmos se guardan en el archivo de proyecto, y en el archivo de plantilla de mapas.
 * Layoutitem se refiere a cada uno de los items que componen el mapa
+
+### Pasar Variables al Layout
+
+QgsExpressionContextUtils.setLayoutVariable(QgsProject.instance().layoutManager().layouts()[0], "jajaja", "Hello World")
+
+### Un cacho de código
+
+'''
+'''
+
+from qgis.core import *
+
+lyrGrid250 = 'h250grid'
+h250ID     = 23663
+
+#cambiar al sistema de referencia correspondiente
+crs = QgsCoordinateReferenceSystem(22183)
+QgsProject.instance().setCrs(crs)
+
+#empezamos filtrando las capa por el ID
+layer = QgsProject.instance().mapLayersByName(lyrGrid250)[0]
+
+#analisis del dataprovider
+dp = layer.dataProvider()
+
+#layer.selectByExpression('\"ID\" = %s' % (h250ID))
+
+print("Layer source %s" % layer.source())
+print("Layer count %s" % layer.featureCount())
+print("Layer select count %s" % layer.selectedFeatureCount())
+
+iface.actionZoomToSelected().trigger()
+#iface.actionZoomToLayer()
+
+layer.removeSelection()
+
+#QgsExpressionContextUtils.setLayoutVariable(QgsProject.instance().layoutManager().layouts()[0], "jajaja", "Hello World")
+
+#cambiamos el srs por la faja que corresponde
+
+#hacemos zoom a la capa grid_250
+
+'''
+'''
+
 ### Obtener datos desde la base de datos cartoParam
 
 https://gis.stackexchange.com/questions/388063/get-feature-value-to-use-in-print-composer-label
