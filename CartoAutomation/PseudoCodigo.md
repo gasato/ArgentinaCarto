@@ -3,7 +3,8 @@
 ## Diseño Cartográfico
 * Que elementos componen el mapa
   * Diseño de los componentes del mapa
-  * Ubicación de los elementos en el papel
+  * Definir puntos de anclaje y líneas guía
+  * Ubicación, absoluta y relativade, los elementos en el papel
   * Tamaño
   * Tipografías
 
@@ -11,8 +12,8 @@
 
 * Capas de información
 * Grilla Indice
+  * Identificador de cada hoja
   * Límites exactos de la hoja
-  * Identificador
   * Nombre
   * Otros datos como localidad, provincia
   * Información auxiliar puesta en forma explícita
@@ -61,6 +62,8 @@ Identificar la hoja y el tema a desplegar
 Definir SRC
 
 Definir Escala
+
+Establecer alineación con el norte. Calcular la rotación del canvas.
 
 Obtener Tamaño del área en función de la escala para ajustar y definir el tamaño del marco
 
