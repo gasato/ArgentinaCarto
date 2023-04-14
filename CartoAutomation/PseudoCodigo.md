@@ -94,8 +94,7 @@ QgsExpressionContextUtils.setLayoutVariable(QgsProject.instance().layoutManager(
 
 ### Un cacho de código
 
-'''
-'''
+```
 
 from qgis.core import *
 
@@ -129,8 +128,18 @@ layer.removeSelection()
 
 #hacemos zoom a la capa grid_250
 
-'''
-'''
+```
+
+### Formateo de Grilla Posgar
+
+```
+concat(replace(left(@grid_number,2),
+                array('1','2','3','4','5','6','7','8','9','0'),
+                array('¹','²','³','⁴','⁵','⁶','⁷','⁸','⁹','⁰')
+              ),
+       substr(@grid_number,2,2) 
+       )
+```
 
 ### Obtener datos desde la base de datos cartoParam
 
