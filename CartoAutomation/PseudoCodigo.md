@@ -157,6 +157,8 @@ Existen varias opciones que deben ser exploradas para incluir dentro del cuerpo 
  
  https://gitlab.com/zebulon-1er/text2svg
  
+ Si se opta por formato html, se puede hacer un script python incluyendo CSS.
+ 
 ### Problemas
 
 function does not work in print layout (at least in 3.16). 
