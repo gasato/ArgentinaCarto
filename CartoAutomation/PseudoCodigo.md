@@ -95,38 +95,98 @@ QgsExpressionContextUtils.setLayoutVariable(QgsProject.instance().layoutManager(
 ### Un cacho de código
 
 ```
-
 from qgis.core import *
 
-lyrGrid250 = 'h250grid'
-h250ID     = 23663
+def get250kQuadrant(h250ID):
+    '''
+    Obtiene cuadrante. Se realiza de esta manera a fines
+    de facilitar la lectura del código
+    '''
+    if len(str(h250ID)) != 5:
+        raise ValueError ("Error código de hoja 250k, inválido %s" % (h250ID))
+               
+    return str(h250ID)[-1]
+    
+def mapAngle(quadrant):
+    '''
+    Identifica el ángulo de rotación para mapas 1:250k
+    en función del número de cuadrante
+    '''
+    #chequeamos errores
+    if type(quadrant) is str:
+        quadrant = int(quadrant)
+       
+    if quadrant > 4 or quadrant < 1:
+       print ("Error código de cuadrante inválido $s" % (quadrant))
+       mAngleVal = None    
+        
+    #diccionario con equivalencias de cuadrantes vs ángulos
+    mangleDict= {1:0.48214,2:-0.48214,3:0.48214, 4:-0.48214}
+    
+    mAngleVal = mangleDict[quadrant]
+    
+    print ("Angulo de rotación hoja 250.000 cuadrante %s  %s" % (quadrant, mAngleVal))
+            
+    return mAngleVal
+    
+h250ID = 37694
 
-#cambiar al sistema de referencia correspondiente
-crs = QgsCoordinateReferenceSystem(22183)
+lyrGrid250  = 'h250grid' 
+lyrGrid250M = 'h250gridMask'
+lyrGeo250   = 'v_h250geounidades'
+
+#Obtenemos layers 
+layerGeo = QgsProject.instance().mapLayersByName(lyrGeo250)[0]
+layerM   = QgsProject.instance().mapLayersByName(lyrGrid250M)[0]
+layer    = QgsProject.instance().mapLayersByName(lyrGrid250)[0]
+
+#cambiar al sistema de referencia correspondiente 
+crs = QgsCoordinateReferenceSystem(layerGeo.sourceCrs()) 
 QgsProject.instance().setCrs(crs)
+print(".......Seteando CRS a: %s" % crs.description())
 
-#empezamos filtrando las capa por el ID
-layer = QgsProject.instance().mapLayersByName(lyrGrid250)[0]
+#alinear hoja 250k al norte
+mAngle = mapAngle(get250kQuadrant(h250ID))
+iface.mapCanvas().setRotation(mAngle)
+print(".......Rotando Map Canvas %s" % (mAngle))
 
-#analisis del dataprovider
+#analisis del dataprovider 
 dp = layer.dataProvider()
 
-#layer.selectByExpression('\"ID\" = %s' % (h250ID))
+print(".......Enmascarando área externa")
+layerM.setSubsetString("ID !=%s" % h250ID)
+print(".......Seleccionando y activando el area de la hoja")
+layer.setSubsetString("ID=%s" % h250ID)
+iface.setActiveLayer(layer) #activamos el layer
 
-print("Layer source %s" % layer.source())
-print("Layer count %s" % layer.featureCount())
-print("Layer select count %s" % layer.selectedFeatureCount())
 
-iface.actionZoomToSelected().trigger()
-#iface.actionZoomToLayer()
+print("Layer source %s\n" % layer.source()) 
+print("Layer count %s\n" % layer.featureCount()) 
+print("Layer select count %s\n" % layer.selectedFeatureCount())
 
-layer.removeSelection()
+#iface.actionZoomToSelected().trigger() #tiene que estar enfocado
 
-#QgsExpressionContextUtils.setLayoutVariable(QgsProject.instance().layoutManager().layouts()[0], "jajaja", "Hello World")
+iface.actionZoomToLayer().trigger()
 
-#cambiamos el srs por la faja que corresponde
+#obtener los valores de items
+#iterFeature = layer.getSelectedFeatures()
+iterFeature = layer.getFeatures()
+itemFeature = next(iterFeature)
 
-#hacemos zoom a la capa grid_250
+itemLst = ('xmin', 'xmax', 'ymin', 'ymax','width250kmm','heigth250kmm')
+
+for i in itemLst:
+    itemValue = itemFeature[i]
+    print(i, itemValue)
+    QgsExpressionContextUtils.setLayoutVariable(QgsProject.instance().layoutManager().layouts()[0], i, itemValue)
+    
+QgsExpressionContextUtils.setLayoutVariable(QgsProject.instance().layoutManager().layouts()[0], 'escala', 250000)
+    
+
+
+layer.removeSelection() #remover luego de la lectura de las variables
+
+
 
 ```
 
