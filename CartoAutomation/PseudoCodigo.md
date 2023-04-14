@@ -136,6 +136,18 @@ layer.removeSelection()
 
 https://gis.stackexchange.com/questions/388063/get-feature-value-to-use-in-print-composer-label
 
+### Incluir textos en el mapa desde archivos de texto
+
+Existen varias opciones que deben ser exploradas para incluir dentro del cuerpo de mapa textos que descriptivos.
+ Uno de ellos es convertir el archivo de texto a formato SVG u HTML. Cada uno de estos formatos tienen su dificultad y facilidad 
+ para ser incluídos en el map frame.
+ 
+ https://github.com/ksss/text2svg
+ 
+ https://text2svg.syrusdark.website/latest/
+ 
+ https://gitlab.com/zebulon-1er/text2svg
+ 
 ### Problemas
 
 function does not work in print layout (at least in 3.16). 
