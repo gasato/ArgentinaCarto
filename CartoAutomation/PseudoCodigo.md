@@ -224,3 +224,8 @@ Existen varias opciones que deben ser exploradas para incluir dentro del cuerpo 
 function does not work in print layout (at least in 3.16). 
 
 attribute(get_feature_by_id ('POLIGONAL_FNHIS2008A_8babdf78_50dc_480f_b811_0da927b7c9a5',1),'area')
+
+## Otros
+
+### Magnetic Declination Calculator
+https://pypi.org/project/magnetic-field-calculator/
