@@ -229,3 +229,17 @@ attribute(get_feature_by_id ('POLIGONAL_FNHIS2008A_8babdf78_50dc_480f_b811_0da92
 
 ### Magnetic Declination Calculator
 https://pypi.org/project/magnetic-field-calculator/
+
+https://github.com/proway2/demag
+
+#### web version NOAA
+
+Conviene hacer el cálculo para cada hoja y guardarlo en la base de datos
+
+* API and usage rules are described here
+* API version example https://www.ngdc.noaa.gov/geomag-web/calculators/calculateDeclination?lat1=60&lon1=40&startYear=2018&startMonth=06&startDay=02&resultFormat=xml
+* API HTTP GET result:
+
+https://github.com/proway2/demag/blob/master/demag.py
+
+
